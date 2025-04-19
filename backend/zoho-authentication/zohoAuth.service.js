@@ -50,6 +50,8 @@ const generateAccessToken = async () => {
       { new: true },
     );
 
+    console.log('Done', new Date());
+
     return {
       statusCode: 200,
       message: 'Zoho Access Token updated successfully',

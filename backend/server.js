@@ -11,6 +11,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 const routes = require('./app');
+const cronJob = require('./utils/cron');
 
 const {
   PORT,
@@ -24,6 +25,8 @@ mongoose.connect(MONGO_URL, {
   .catch((error) => { console.log('MongoDB connection error: ', error); });
 
 app.use('/api', routes);
+
+cronJob();
 
 app.listen(PORT, () => {
   console.log('Server connected on PORT: ', PORT);
